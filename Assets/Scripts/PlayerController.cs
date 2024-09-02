@@ -15,9 +15,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InputAction _shoot;
     [SerializeField] private InputAction _quit;
     [SerializeField] private InputAction _restart;
+    [SerializeField] private Transform _bulletSpawner;
+    [SerializeField] BulletManager _bulletObject;
 
     private bool isPlayerMoving;
-    private bool isShooting;
     public float speed = 10;
     private float moveDirection;
 
@@ -33,20 +34,13 @@ public class PlayerController : MonoBehaviour
         _movement.canceled += _movement_canceled;
         _restart.performed += Restart_Performed;
         _quit.performed += Quit_Performed;
-        _shoot.started += _shoot_started;
-        _shoot.canceled += _shoot_canceled;
 
         isPlayerMoving = false;
     }
 
-    private void _shoot_canceled(InputAction.CallbackContext context)
+    private void OnShoot()
     {
-        isShooting = false;
-    }
-
-    private void _shoot_started(InputAction.CallbackContext context)
-    {
-        isShooting = true;
+        Instantiate(_bulletObject, _bulletSpawner.position, transform.rotation);
     }
 
     private void Quit_Performed(InputAction.CallbackContext context)

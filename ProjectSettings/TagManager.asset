@@ -11,12 +11,12 @@ TagManager:
   - 
   - Water
   - UI
-  - Points
+  - Floor
   - Enemies
   - 
   - 
   - 
-  - 
+  - enemies
   - 
   - 
   - 
@@ -40,4 +40,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Enemy
+    uniqueID: 3826434439
     locked: 0
